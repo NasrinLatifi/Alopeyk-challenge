@@ -6,6 +6,9 @@ export const onValidateForm = (values) => {
   if (!values.lastName) {
     errors.lastName = "Last Name is Required";
   }
+  if (!values.gender) {
+    errors.gender = "gender is Required";
+  }
   if (!values.age) {
     errors.age = "Age is Required";
   }

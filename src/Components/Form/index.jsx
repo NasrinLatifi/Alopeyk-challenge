@@ -4,9 +4,10 @@ import MainInput from "../MainInput";
 import MainTextArea from "../MainTextArea";
 import { onValidateForm } from "./helpers";
 import "./_form.scss";
+import RadioGroup from "../RadioGroup";
+import CheckBox from "../CheckBox";
 
 const Form = () => {
-
   const onSubmitForm = (values, { setSubmitting }) => {
     setTimeout(() => {
       alert(JSON.stringify(values, null, 2));
@@ -14,21 +15,23 @@ const Form = () => {
     }, 400);
   };
   return (
-      <Formik
-        initialValues={{ email: "", password: "" }}
-        validate={onValidateForm}
-        onSubmit={onSubmitForm}
-      >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isSubmitting,
-          /* and other goodies */
-        }) => (
+    <Formik
+      initialValues={{ gender: "female" }}
+      validate={onValidateForm}
+      onSubmit={onSubmitForm}
+    >
+      {({
+        values,
+        errors,
+        touched,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        isSubmitting,
+        /* and other goodies */
+      }) => {
+        console.log("values",values);
+        return (
           <form className="form-container" onSubmit={handleSubmit}>
             <MainInput
               label="First Name"
@@ -36,9 +39,6 @@ const Form = () => {
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.firstName}
-              errorMessage={
-                touched?.firstName && errors.firstName ? errors.firstName : null
-              }
             />
             <MainInput
               label="Last Name"
@@ -48,6 +48,16 @@ const Form = () => {
               value={values.lastName}
               errorMessage={
                 touched?.lastName && errors.lastName ? errors.lastName : null
+              }
+            />
+            <RadioGroup
+              label="Gender"
+              name="gender"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.gender}
+              errorMessage={
+                touched?.gender && errors.gender ? errors.gender : null
               }
             />
             <MainInput
@@ -87,7 +97,12 @@ const Form = () => {
                   : null
               }
             />
-            {/* work type */}
+            <CheckBox
+              label="Work Type"
+              name="worktype"
+              onChange={handleChange}
+              value={values.worktype}
+            />
 
             <MainTextArea
               label="Description"
@@ -105,8 +120,9 @@ const Form = () => {
               Submit
             </button>
           </form>
-        )}
-      </Formik>
+        );
+      }}
+    </Formik>
   );
 };
 

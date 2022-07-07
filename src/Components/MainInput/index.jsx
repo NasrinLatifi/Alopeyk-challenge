@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "./mainInput.scss";
 import { InfoCircleOutlined } from "@ant-design/icons";
 
 const MainInput = (props) => {
-  const { label, errorMessage, onChange, onBlur, name, vlaue, type, min, max } =
+  const { label, errorMessage, onChange, value, type, min, max, name, onBlur } =
     props;
 
   return (
@@ -21,7 +21,7 @@ const MainInput = (props) => {
         name={name}
         onChange={onChange}
         onBlur={onBlur}
-        value={vlaue}
+        defaultValue={value}
         type={type}
         className="input-style"
         min={min}
