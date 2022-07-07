@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../MainInput/mainInput.scss";
+import "./_checkbox.scss";
 import { Checkbox } from "antd";
 const CheckboxGroup = Checkbox.Group;
 

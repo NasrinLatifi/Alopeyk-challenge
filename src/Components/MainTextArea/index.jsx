@@ -1,5 +1,5 @@
 import React from "react";
-import "../MainInput/mainInput.scss";
+import "../MainInput/_mainInput.scss";
 import { InfoCircleOutlined } from "@ant-design/icons";
 
 const MainTextArea = (props) => {

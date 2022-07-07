@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../MainInput/mainInput.scss";
+import "./_radioGroup.scss";
 import { InfoCircleOutlined } from "@ant-design/icons";
 import { Radio } from "antd";
 

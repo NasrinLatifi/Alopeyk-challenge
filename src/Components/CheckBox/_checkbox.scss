@@ -1,0 +1,38 @@
+.check-box-group-wrapper {
+  hr {
+    background-color: #816797;
+    border: none;
+    height: 1px;
+  }
+  .text-container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding-bottom: 4px;
+    .label-style {
+      font-size: 14px;
+      font-family: cursive;
+      font-weight: 500;
+      color: #121212;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  .ant-checkbox-group {
+    span {
+      font-size: 12px;
+      font-family: cursive;
+      font-weight: 400;
+      color: #121212;
+      cursor: pointer;
+    }
+    .ant-checkbox {
+      cursor: pointer;
+      input{
+        cursor: pointer;
+      }
+    }
+  }
+}

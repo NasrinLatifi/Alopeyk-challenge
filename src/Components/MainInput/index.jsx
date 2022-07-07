@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./mainInput.scss";
+import "./_mainInput.scss";
 import { InfoCircleOutlined } from "@ant-design/icons";
 
 const MainInput = (props) => {
