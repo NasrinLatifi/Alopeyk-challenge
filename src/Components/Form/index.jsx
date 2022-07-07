@@ -55,6 +55,9 @@ const Form = () => {
               onChange={handleChange}
               onBlur={handleBlur}
               defaultValue={initialValues.firstName}
+              errorMessage={
+                touched?.firstName && errors.firstName ? errors.firstName : null
+              }
             />
             <MainInput
               label="Last Name"
@@ -77,16 +80,6 @@ const Form = () => {
               max={49}
               errorMessage={touched?.age && errors.age ? errors.age : null}
             />
-            <RadioGroup
-              label="Gender"
-              name="gender"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              defaultValue={initialValues.gender}
-              errorMessage={
-                touched?.gender && errors.gender ? errors.gender : null
-              }
-            />
             <MainInput
               label="Birth date"
               name="birthDate"
@@ -98,6 +91,23 @@ const Form = () => {
                 touched?.birthDate && errors.birthDate ? errors.birthDate : null
               }
             />
+            <RadioGroup
+              label="Gender"
+              name="gender"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              defaultValue={initialValues.gender}
+              errorMessage={
+                touched?.gender && errors.gender ? errors.gender : null
+              }
+            />
+            <CheckBox
+              label="Work Type"
+              name="worktype"
+              onChange={handleChange}
+              defaultValue={initialValues.worktype}
+            />
+
             <MainSelect
               label="Country"
               name="country"
@@ -153,13 +163,6 @@ const Form = () => {
                   : null
               }
             />
-            <CheckBox
-              label="Work Type"
-              name="worktype"
-              onChange={handleChange}
-              defaultValue={initialValues.worktype}
-            />
-
             <MainTextArea
               label="Description"
               name="description"
@@ -172,9 +175,6 @@ const Form = () => {
                   : null
               }
             />
-            <button type="submit" disabled={isSubmitting}>
-              Submit
-            </button>
           </form>
         );
       }}

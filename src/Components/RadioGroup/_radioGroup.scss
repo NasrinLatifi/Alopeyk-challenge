@@ -1,6 +1,7 @@
 .radio-group-wrapper {
+  width: 250px;
   hr {
-    background-color: #816797;
+    background-color: #7C3E66;
     border: none;
     height: 1px;
   }
@@ -19,14 +20,15 @@
       text-overflow: ellipsis;
     }
     .error-icon {
-      color: #f05454;
+      color: #990000;
       padding-left: 4px;
     }
     .error-style {
+      padding: 2px;
       font-size: 12px;
       font-weight: 500;
       font-family: cursive;
-      color: #f05454;
+      color: #990000;
       display: flex;
       flex: 1;
       min-width: fit-content;
@@ -41,8 +43,8 @@
         cursor:pointer;
     }
     .ant-radio-input{
-        background-color: #816797 ;
-        border-color:#816797 ;
+        background-color: #7C3E66 ;
+        border-color:#7C3E66 ;
         cursor:pointer;
     }
   }

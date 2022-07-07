@@ -1,6 +1,7 @@
 .check-box-group-wrapper {
+  width: 250px;
   hr {
-    background-color: #816797;
+    background-color: #7C3E66;
     border: none;
     height: 1px;
   }
@@ -30,7 +31,7 @@
     }
     .ant-checkbox {
       cursor: pointer;
-      input{
+      input {
         cursor: pointer;
       }
     }

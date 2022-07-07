@@ -19,14 +19,15 @@
         text-overflow: ellipsis;
     }
     .error-icon{
-        color: #F05454;
+        color: #990000;
         padding-left: 4px;
     }
     .error-style{
+        padding: 2px;
         font-size: 12px;
         font-weight: 500;
         font-family: cursive;
-        color: #F05454;
+        color: #990000;
         display: flex;
         flex: 1;
         min-width: fit-content;
@@ -35,11 +36,11 @@
 }
   select {
     border-radius: 4px;
-    border: #51557E 1px solid;
+    border: #243A73 1px solid;
     box-shadow: none;
     outline-offset: unset;
     outline: none;
-    height: 24px;
+    height: 26px;
     max-width: 250px;
   }
 }

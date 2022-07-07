@@ -19,14 +19,15 @@
             text-overflow: ellipsis;
         }
         .error-icon{
-            color: #F05454;
+            color: #990000;
             padding-left: 4px;
         }
         .error-style{
+            padding: 2px;
             font-size: 12px;
             font-weight: 500;
             font-family: cursive;
-            color: #F05454;
+            color: #990000;
             display: flex;
             flex: 1;
             min-width: fit-content;
@@ -35,7 +36,7 @@
     }
     .input-style{
         border-radius: 4px;
-        border: #51557E 1px solid;
+        border: #243A73 1px solid;
         box-shadow: none;
         outline-offset: unset;
         outline: none ;
@@ -43,7 +44,21 @@
         padding: 0 4px;
         max-width: 242px;
         &:focus{
-            border-color: #816797;
+            border-color: #7C3E66;
+        }
+    }
+    .text-area-input-style{
+        border-radius: 4px;
+        border: #243A73 1px solid;
+        box-shadow: none;
+        outline-offset: unset;
+        outline: none ;
+        height: 24px;
+        padding: 0 4px;
+        width:500px ;
+        max-width: 500px;
+        &:focus{
+            border-color: #7C3E66;
         }
     }
 }

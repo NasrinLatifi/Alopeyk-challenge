@@ -1,0 +1,33 @@
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  .first-part {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    background-color: #A5BECC;
+  }
+  .second-part {
+    display: flex;
+    flex: 1;
+    background-color: #7C3E66;
+    width: 100%;
+    justify-content: center;
+  }
+  .third-part {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    h1 {
+      color: #7C3E66;
+      font-family: cursive;
+    }
+    position: absolute;
+  }
+}

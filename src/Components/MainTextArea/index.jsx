@@ -22,7 +22,7 @@ const MainTextArea = (props) => {
         onChange={onChange}
         onBlur={onBlur}
         value={defaultValue}
-        className="input-style"
+        className="text-area-input-style"
       />
     </div>
   );

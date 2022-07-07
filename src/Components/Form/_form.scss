@@ -1,6 +1,10 @@
-.form-container{
-    padding: 10px;
-    background-color: #D6D5A8;
-    border-radius: 4px;
-    width: fit-content;
+.form-container {
+  padding: 10px;
+  background-color: #F2EBE9;
+  border-radius: 4px;
+  width: 510px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border : #7C3E66 1px solid; 
 }
