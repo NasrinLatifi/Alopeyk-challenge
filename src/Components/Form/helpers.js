@@ -9,13 +9,22 @@ export const onValidateForm = (values) => {
   if (!values.gender) {
     errors.gender = "gender is Required";
   }
+  if (!values.city) {
+    errors.city = "City is Required";
+  }
+  if (!values.jobTitle) {
+    errors.jobTitle = "JobTitle is Required";
+  }
+  if (!values.country) {
+    errors.country = "Country is Required";
+  }
   if (!values.age) {
     errors.age = "Age is Required";
   }
-  if (values.age && values.age < 18 ) {
+  if (values.age && values.age < 18) {
     errors.age = "Age must be greater than 18";
   }
-  if (values.age && values.age > 50 ) {
+  if (values.age && values.age > 50) {
     errors.age = "Age must be less than 50";
   }
   if (!values.birthDate) {

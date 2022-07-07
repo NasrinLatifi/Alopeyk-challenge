@@ -4,9 +4,9 @@ import { Checkbox } from "antd";
 const CheckboxGroup = Checkbox.Group;
 
 const CheckBox = (props) => {
-  const { label, onChange, value } = props;
+  const { label, onChange, defaultValue } = props;
   const workTypeOptions = ["Part Time", "Full time", "Freelance"];
-  const [groupValue, setGroupValue] = useState(value);
+  const [groupValue, setGroupValue] = useState(defaultValue);
 
   const onChangeGtoup = (value) => {
     setGroupValue(value);

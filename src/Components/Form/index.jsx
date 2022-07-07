@@ -6,6 +6,22 @@ import { onValidateForm } from "./helpers";
 import "./_form.scss";
 import RadioGroup from "../RadioGroup";
 import CheckBox from "../CheckBox";
+import MainSelect from "../MainSelect";
+
+const cityDB = {
+  iran: [
+    { id: "tehran", name: "Tehran" },
+    { id: "esfahan", name: "Esfahan" },
+    { id: "shiraz", name: "Shiraz" },
+  ],
+  germany: [
+    { id: "berlin", name: "Berlin" },
+    { id: "hamburg", name: "Hamburg" },
+  ],
+  UK: [{ id: "london", name: "london" }],
+  US: [{ id: "newyork", name: "Newyork" }],
+  canada: [{ id: "toronto", name: "Toronto" }],
+};
 
 const Form = () => {
   const onSubmitForm = (values, { setSubmitting }) => {
@@ -31,6 +47,7 @@ const Form = () => {
         initialValues,
         /* and other goodies */
       }) => {
+        console.log("values", values);
         return (
           <form className="form-container" onSubmit={handleSubmit}>
             <MainInput
@@ -50,16 +67,6 @@ const Form = () => {
                 touched?.lastName && errors.lastName ? errors.lastName : null
               }
             />
-            <RadioGroup
-              label="Gender"
-              name="gender"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              defaultValue={initialValues.gender}
-              errorMessage={
-                touched?.gender && errors.gender ? errors.gender : null
-              }
-            />
             <MainInput
               label="Age"
               name="age"
@@ -70,6 +77,16 @@ const Form = () => {
               min={19}
               max={49}
               errorMessage={touched?.age && errors.age ? errors.age : null}
+            />
+            <RadioGroup
+              label="Gender"
+              name="gender"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              defaultValue={initialValues.gender}
+              errorMessage={
+                touched?.gender && errors.gender ? errors.gender : null
+              }
             />
             <MainInput
               label="Birth date"
@@ -82,9 +99,49 @@ const Form = () => {
                 touched?.birthDate && errors.birthDate ? errors.birthDate : null
               }
             />
-            {/* conuntry */}
-            {/* city */}
-            {/* job title */}
+            <MainSelect
+              label="Country"
+              name="country"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              defaultValue={initialValues.country}
+              optionsList={[
+                { id: "iran", name: "Iran" },
+                { id: "canada", name: "Canada" },
+                { id: "germany", name: "Germany" },
+                { id: "US", name: "US" },
+                { id: "UK", name: "UK" },
+              ]}
+              errorMessage={
+                touched?.country && errors.country ? errors.country : null
+              }
+            />
+            <MainSelect
+              label="City"
+              name="city"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              defaultValue={initialValues.city}
+              optionsList={cityDB[values.country]}
+              errorMessage={touched?.city && errors.city ? errors.city : null}
+            />
+            <MainSelect
+              label="Job Title"
+              name="jobTitle"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              defaultValue={initialValues.jobTitle}
+              optionsList={[
+                { id: "developr/junior", name: "developr - junior" },
+                { id: "developr/middle", name: "developr - middle" },
+                { id: "developr/senior", name: "developr - senior" },
+                { id: "HR", name: "HR" },
+                { id: "CTO", name: "CTO" },
+              ]}
+              errorMessage={
+                touched?.jobTitle && errors.jobTitle ? errors.jobTitle : null
+              }
+            />
             <MainInput
               label="Phone Number"
               name="phoneNumber"
