@@ -47,7 +47,6 @@ const Form = () => {
         initialValues,
         /* and other goodies */
       }) => {
-        console.log("values", values);
         return (
           <form className="form-container" onSubmit={handleSubmit}>
             <MainInput
