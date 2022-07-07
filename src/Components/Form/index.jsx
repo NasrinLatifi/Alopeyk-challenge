@@ -28,9 +28,9 @@ const Form = () => {
         handleBlur,
         handleSubmit,
         isSubmitting,
+        initialValues,
         /* and other goodies */
       }) => {
-        console.log("values",values);
         return (
           <form className="form-container" onSubmit={handleSubmit}>
             <MainInput
@@ -38,14 +38,14 @@ const Form = () => {
               name="firstName"
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.firstName}
+              defaultValue={initialValues.firstName}
             />
             <MainInput
               label="Last Name"
               name="lastName"
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.lastName}
+              defaultValue={initialValues.lastName}
               errorMessage={
                 touched?.lastName && errors.lastName ? errors.lastName : null
               }
@@ -55,7 +55,7 @@ const Form = () => {
               name="gender"
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.gender}
+              defaultValue={initialValues.gender}
               errorMessage={
                 touched?.gender && errors.gender ? errors.gender : null
               }
@@ -65,7 +65,7 @@ const Form = () => {
               name="age"
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.age}
+              defaultValue={initialValues.age}
               type="number"
               min={19}
               max={49}
@@ -76,7 +76,7 @@ const Form = () => {
               name="birthDate"
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.birthDate}
+              defaultValue={initialValues.birthDate}
               type={"date"}
               errorMessage={
                 touched?.birthDate && errors.birthDate ? errors.birthDate : null
@@ -90,7 +90,7 @@ const Form = () => {
               name="phoneNumber"
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.phoneNumber}
+              defaultValue={initialValues.phoneNumber}
               errorMessage={
                 touched?.phoneNumber && errors.phoneNumber
                   ? errors.phoneNumber
@@ -101,7 +101,7 @@ const Form = () => {
               label="Work Type"
               name="worktype"
               onChange={handleChange}
-              value={values.worktype}
+              defaultValue={initialValues.worktype}
             />
 
             <MainTextArea
@@ -109,7 +109,7 @@ const Form = () => {
               name="description"
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.description}
+              defaultValue={initialValues.description}
               errorMessage={
                 touched?.description && errors.description
                   ? errors.description

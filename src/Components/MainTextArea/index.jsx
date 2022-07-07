@@ -3,7 +3,7 @@ import "../MainInput/mainInput.scss";
 import { InfoCircleOutlined } from "@ant-design/icons";
 
 const MainTextArea = (props) => {
-  const { label, errorMessage, onChange, onBlur, name, vlaue } =
+  const { label, errorMessage, onChange, onBlur, name, defaultValue } =
     props;
 
   return (
@@ -21,7 +21,7 @@ const MainTextArea = (props) => {
         name={name}
         onChange={onChange}
         onBlur={onBlur}
-        value={vlaue}
+        value={defaultValue}
         className="input-style"
       />
     </div>

@@ -4,9 +4,9 @@ import { InfoCircleOutlined } from "@ant-design/icons";
 import { Radio } from "antd";
 
 const RadioGroup = (props) => {
-  const { label, errorMessage, onBlur, onChange, value } = props;
+  const { label, errorMessage, onBlur, onChange, defaultValue } = props;
 
-  const [groupValue, setGroupValue] = useState(value);
+  const [groupValue, setGroupValue] = useState(defaultValue);
 
   const onChangeGtoup = (e) => {
     const value = e?.target?.value ?? null;
