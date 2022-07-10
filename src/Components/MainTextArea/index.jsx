@@ -3,11 +3,18 @@ import "../MainInput/_mainInput.scss";
 import { InfoCircleOutlined } from "@ant-design/icons";
 
 const MainTextArea = (props) => {
-  const { label, errorMessage, onChange, onBlur, name, defaultValue } =
-    props;
+  const {
+    isDisabled,
+    label,
+    errorMessage,
+    onChange,
+    onBlur,
+    name,
+    defaultValue,
+  } = props;
 
   return (
-    <div className="main-input-wrapper">
+    <div className="main-input-wrapper text-area-input-wrapper">
       <div className="text-container">
         <span className="label-style">{label}</span>
         {errorMessage && (
@@ -18,6 +25,7 @@ const MainTextArea = (props) => {
         )}
       </div>
       <textarea
+        disabled={isDisabled}
         name={name}
         onChange={onChange}
         onBlur={onBlur}

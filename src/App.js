@@ -1,10 +1,10 @@
-import{ createContext, useState } from "react";
+import { createContext, useState } from "react";
 import "./App.css";
 import RouteManager from "./RouteManager";
 export const TableContext = createContext();
 
 function App() {
-  const [tableState, setTableState] = useState({ date: [] });
+  const [tableState, setTableState] = useState({ data: [] });
   return (
     // <div className="App">
     //   <header className="App-header">
@@ -22,7 +22,7 @@ function App() {
     //     </a>
     //   </header>
     // </div>
-    <TableContext.Provider value={[tableState, setTableState]}>
+    <TableContext.Provider value={{ tableState, setTableState }}>
       <RouteManager />
     </TableContext.Provider>
   );

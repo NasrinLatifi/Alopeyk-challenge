@@ -1,23 +1,26 @@
 import {
   BrowserRouter,
-  Routes ,
+  Routes,
   Route,
   Link,
-  Navigate ,
+  Navigate,
   useHistory,
-  useLocation
+  useLocation,
 } from "react-router-dom";
 import Home from "../Views/Home";
-import Login from "../Views/Login";
+import Account from "../Views/Account";
+
+export const HOME_ROUTE = "/home";
+export const ACCOUNT_ROUTE = "/account";
 
 function RouteManager() {
   return (
     <BrowserRouter>
-      <Routes >
-        <Route path="/"  element={<Navigate replace to="/login" />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/home" element={<Home />} />
-      </Routes >
+      <Routes>
+        <Route path="/" element={<Navigate replace to={ACCOUNT_ROUTE} />} />
+        <Route path={ACCOUNT_ROUTE} element={<Account />} />
+        <Route path={HOME_ROUTE} element={<Home />} />
+      </Routes>
     </BrowserRouter>
   );
 }

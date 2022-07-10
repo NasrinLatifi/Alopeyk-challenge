@@ -4,7 +4,8 @@ import { InfoCircleOutlined } from "@ant-design/icons";
 import { Radio } from "antd";
 
 const RadioGroup = (props) => {
-  const { label, errorMessage, onBlur, onChange, defaultValue } = props;
+  const { isDisabled, label, errorMessage, onBlur, onChange, defaultValue } =
+    props;
 
   const [groupValue, setGroupValue] = useState(defaultValue);
 
@@ -26,7 +27,11 @@ const RadioGroup = (props) => {
           </>
         )}
       </div>
-      <Radio.Group onChange={onChangeGtoup} value={groupValue}>
+      <Radio.Group
+        disabled={isDisabled}
+        onChange={onChangeGtoup}
+        value={groupValue}
+      >
         <Radio key={1} value={"female"}>
           Female
         </Radio>

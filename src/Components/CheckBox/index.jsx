@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import "./_checkbox.scss";
 import { Checkbox } from "antd";
 const CheckboxGroup = Checkbox.Group;
 
 const CheckBox = (props) => {
-  const { label, onChange, defaultValue } = props;
+  const { isDisabled, label, onChange, defaultValue, name } = props;
   const workTypeOptions = ["Part Time", "Full time", "Freelance"];
-  const [groupValue, setGroupValue] = useState(defaultValue);
 
   const onChangeGtoup = (value) => {
-    setGroupValue(value);
-    onChange?.(value);
+    onChange?.({ target: { name, value } });
   };
 
   return (
@@ -20,8 +18,10 @@ const CheckBox = (props) => {
         <span className="label-style">{label}</span>
       </div>
       <CheckboxGroup
+        disabled={isDisabled}
+        name={name}
         options={workTypeOptions}
-        value={groupValue}
+        defaultValue={defaultValue}
         onChange={onChangeGtoup}
       />
       <hr />

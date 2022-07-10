@@ -13,6 +13,7 @@ const MainSelect = (props) => {
     onBlur,
     required = true,
     errorMessage,
+    isDisabled,
   } = props;
 
   return (
@@ -27,6 +28,7 @@ const MainSelect = (props) => {
         )}
       </div>
       <select
+        disabled={isDisabled}
         required={required}
         name={name}
         defaultValue={defaultValue}

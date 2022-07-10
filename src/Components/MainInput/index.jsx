@@ -3,8 +3,18 @@ import "./_mainInput.scss";
 import { InfoCircleOutlined } from "@ant-design/icons";
 
 const MainInput = (props) => {
-  const { label, errorMessage, onChange, defaultValue, type, min, max, name, onBlur } =
-    props;
+  const {
+    isDisabled,
+    label,
+    errorMessage,
+    onChange,
+    defaultValue,
+    type,
+    min,
+    max,
+    name,
+    onBlur,
+  } = props;
 
   return (
     <div className="main-input-wrapper">
@@ -18,6 +28,7 @@ const MainInput = (props) => {
         )}
       </div>
       <input
+        disabled={isDisabled}
         name={name}
         onChange={onChange}
         onBlur={onBlur}
