@@ -1,8 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
-import Login from './Views/Login';
+import{ createContext, useState } from "react";
+import "./App.css";
+import RouteManager from "./RouteManager";
+export const TableContext = createContext();
 
 function App() {
+  const [tableState, setTableState] = useState({ date: [] });
   return (
     // <div className="App">
     //   <header className="App-header">
@@ -20,7 +22,9 @@ function App() {
     //     </a>
     //   </header>
     // </div>
-    <Login />
+    <TableContext.Provider value={[tableState, setTableState]}>
+      <RouteManager />
+    </TableContext.Provider>
   );
 }
 
