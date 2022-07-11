@@ -12,6 +12,7 @@ import { HOME_ROUTE } from "../../RouteManager";
 import { TableContext } from "../../App";
 import { v4 as uuid } from "uuid";
 
+/****************************** DATA BASE *****************************************/
 const cityDB = {
   iran: [
     { id: "tehran", name: "Tehran" },
@@ -27,13 +28,29 @@ const cityDB = {
   canada: [{ id: "toronto", name: "Toronto" }],
 };
 
+/**
+ *
+ * @param {object} param0
+ * ***************************
+ *
+ * @param {boolean} isDisabled  is true in view mode
+ * @param {object} initialValues is { gender: "female" } when we are creating a new account
+ *
+ * ***************************
+ * @returns account form + buttons
+ */
+
 const Form = ({ isDisabled, initialValues = { gender: "female" } }) => {
+  /****************************** VALUE GETTERS *****************************************/
   const { setTableState, tableState } = useContext(TableContext);
+
+  /****************************** NAVIGATE *****************************************/
   const navigate = useNavigate();
   const navigateToHome = () => {
     navigate(HOME_ROUTE);
   };
 
+  /****************************** FORM SUBMIT *****************************************/
   const onSubmitForm = (values, { setSubmitting }) => {
     let newData = [];
     if (tableState?.data?.length && values?.id) {
@@ -56,6 +73,7 @@ const Form = ({ isDisabled, initialValues = { gender: "female" } }) => {
     }, 400);
   };
 
+  /****************************** ELEMNTS *****************************************/
   return (
     <Formik
       initialValues={initialValues}

@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import "./_mainInput.scss";
 import { InfoCircleOutlined } from "@ant-design/icons";
 
+/**
+ * we use HTML input
+ * @param {object} props 
+ * @returns input element with label
+ */
 const MainInput = (props) => {
   const {
     isDisabled,
@@ -16,6 +21,7 @@ const MainInput = (props) => {
     onBlur,
   } = props;
 
+  /****************************** ELMENTS *****************************************/
   return (
     <div className="main-input-wrapper">
       <div className="text-container">

@@ -1,8 +1,12 @@
 import React from "react";
-import { useEffect } from "react";
 import "./_mainSelect.scss";
 import { InfoCircleOutlined } from "@ant-design/icons";
 
+/**
+ * we use HTML select
+ * @param {object} props 
+ * @returns select with label
+ */
 const MainSelect = (props) => {
   const {
     label,
@@ -16,6 +20,7 @@ const MainSelect = (props) => {
     isDisabled,
   } = props;
 
+  /****************************** ELMENTS *****************************************/
   return (
     <div className="select-wrapper">
       <div className="text-container">

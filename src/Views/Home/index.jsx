@@ -7,14 +7,23 @@ import "./_home.scss";
 import "antd/dist/antd.css";
 import { ACCOUNT_ROUTE } from "../../RouteManager";
 
+/**
+ * account management
+ * @returns table
+ */
 const Home = () => {
-  const navigate = useNavigate();
+  /****************************** DATA MANAGER *****************************************/
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const { tableState, setTableState } = useContext(TableContext);
+
+  /****************************** NAVIGATE *****************************************/
+  const navigate = useNavigate();
   const navigateToLogin = () => {
     navigate(ACCOUNT_ROUTE);
   };
+
+  /****************************** COLUMN GENERATOR *****************************************/
   const columns = useMemo(() => {
     return getColumns({
       searchedColumn,
@@ -26,7 +35,8 @@ const Home = () => {
       setSearchText,
     });
   }, []);
-  const handleChange = () => {};
+
+  /****************************** ELMENTS *****************************************/
   return (
     <div className="home-page-container">
       <div className="button-container">
@@ -37,7 +47,7 @@ const Home = () => {
       <Table
         columns={columns}
         dataSource={tableState?.data}
-        onChange={handleChange}
+        scroll={{ x: 1300 }}
       />
     </div>
   );

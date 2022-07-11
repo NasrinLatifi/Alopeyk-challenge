@@ -2,6 +2,11 @@ import React from "react";
 import "../MainInput/_mainInput.scss";
 import { InfoCircleOutlined } from "@ant-design/icons";
 
+/**
+ * we use HTML text area
+ * @param {object} props 
+ * @returns text area with label
+ */
 const MainTextArea = (props) => {
   const {
     isDisabled,
@@ -13,6 +18,7 @@ const MainTextArea = (props) => {
     defaultValue,
   } = props;
 
+  /****************************** ELMENTS *****************************************/
   return (
     <div className="main-input-wrapper text-area-input-wrapper">
       <div className="text-container">

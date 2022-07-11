@@ -1,6 +1,6 @@
 import { ACCOUNT_ROUTE } from "../../RouteManager";
 import { getColumnSearchProps } from "./ColumnSreach";
-
+import "./_home.scss";
 export const getColumns = ({
   tableState,
   setTableState,
@@ -17,8 +17,7 @@ export const getColumns = ({
     filterSearch: true,
     filterMode: "tree",
     onFilter: (value, record) => record.firstName.includes(value),
-    // sortOrder: sortedInfo.columnKey === "firstName" ? sortedInfo.order : null,
-    ellipsis: true,
+    width: 100,
     ...getColumnSearchProps({
       dataIndex: "firstName",
       searchText,
@@ -30,6 +29,7 @@ export const getColumns = ({
   {
     title: "Last Name",
     dataIndex: "lastName",
+    width: 100,
     key: "lastName",
     ...getColumnSearchProps({
       dataIndex: "lastName",
@@ -105,7 +105,7 @@ export const getColumns = ({
             onClick={() => {
               navigate(ACCOUNT_ROUTE + `?id=${item.id}&mode=edit`);
             }}
-            className="add-member-button"
+            className="dark-button"
           >
             Edit
           </button>
@@ -113,7 +113,7 @@ export const getColumns = ({
             onClick={() => {
               onDeleteRecord({ tableState, setTableState, item });
             }}
-            className="add-member-button"
+            className="white-button"
           >
             delete
           </button>
@@ -121,7 +121,7 @@ export const getColumns = ({
             onClick={() => {
               navigate(ACCOUNT_ROUTE + `?id=${item.id}&mode=view`);
             }}
-            className="add-member-button"
+            className="dark-button"
           >
             view
           </button>

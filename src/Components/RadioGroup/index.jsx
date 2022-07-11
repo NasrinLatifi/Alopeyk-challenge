@@ -1,20 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import "./_radioGroup.scss";
 import { InfoCircleOutlined } from "@ant-design/icons";
 import { Radio } from "antd";
 
+/**
+ * we use antd Radio
+ * we just support male and female options (becaues we have onlyone radio)
+ * options can be as a prop
+ * @param {object} props 
+ * @returns radio group with label
+ */
 const RadioGroup = (props) => {
-  const { isDisabled, label, errorMessage, onBlur, onChange, defaultValue } =
+  const {name, isDisabled, label, errorMessage, onBlur, onChange, defaultValue } =
     props;
 
-  const [groupValue, setGroupValue] = useState(defaultValue);
-
-  const onChangeGtoup = (e) => {
-    const value = e?.target?.value ?? null;
-    setGroupValue(value);
-    onChange?.(value);
-    onBlur?.(value);
-  };
+  /****************************** ELMENTS *****************************************/
   return (
     <div className="radio-group-wrapper">
       <hr />
@@ -29,8 +29,10 @@ const RadioGroup = (props) => {
       </div>
       <Radio.Group
         disabled={isDisabled}
-        onChange={onChangeGtoup}
-        value={groupValue}
+        onChange={onChange}
+        defaultValue={defaultValue}
+        onBlur={onBlur}
+        name={name}
       >
         <Radio key={1} value={"female"}>
           Female
