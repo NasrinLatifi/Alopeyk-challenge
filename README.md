@@ -82,4 +82,4 @@ I use context for data managing.
 I use react router 6 and use search param for handling form modes(add/edit/view).
 
 
-I use this color paletter:https://colorhunt.co/palette/7c3e66f2ebe9a5becc243a73
+I use this color paletter: https://colorhunt.co/palette/7c3e66f2ebe9a5becc243a73
