@@ -69,7 +69,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-#### USE APP
+
+
+
+## USE APP
 Thanks for testing my app.
 City is filtered base on country. Please set country first and then set country.
 Also, please check all countries and cities:)
