@@ -46,7 +46,6 @@ const Form = ({ isDisabled, initialValues = { gender: "female" } }) => {
     } else if (!values?.id) {
       newData = [...tableState?.data, { ...values, id: uuid() }];
     }
-    console.log("newData", newData);
     setTableState({
       ...tableState,
       data: newData,

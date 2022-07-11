@@ -1,29 +1,49 @@
 import { ACCOUNT_ROUTE } from "../../RouteManager";
+import { getColumnSearchProps } from "./ColumnSreach";
 
-export const getColumns = ({ tableState, setTableState, navigate }) => [
+export const getColumns = ({
+  tableState,
+  setTableState,
+  navigate,
+  searchText,
+  setSearchText,
+  searchedColumn,
+  setSearchedColumn,
+}) => [
   {
     title: "First Name",
     dataIndex: "firstName",
     key: "firstName",
-    // filters: [
-    //   { text: "Joe", value: "Joe" },
-    //   { text: "Jim", value: "Jim" },
-    // ],
-    // filteredValue: filteredInfo.name || null,
-    // onFilter: (value, record) => record.name.includes(value),
-    // sorter: (a, b) => a.name.length - b.name.length,
+    filterSearch: true,
+    filterMode: "tree",
+    onFilter: (value, record) => record.firstName.includes(value),
     // sortOrder: sortedInfo.columnKey === "firstName" ? sortedInfo.order : null,
     ellipsis: true,
+    ...getColumnSearchProps({
+      dataIndex: "firstName",
+      searchText,
+      setSearchText,
+      searchedColumn,
+      setSearchedColumn,
+    }),
   },
   {
     title: "Last Name",
     dataIndex: "lastName",
     key: "lastName",
+    ...getColumnSearchProps({
+      dataIndex: "lastName",
+      searchText,
+      setSearchText,
+      searchedColumn,
+      setSearchedColumn,
+    }),
   },
   {
     title: "Age",
     dataIndex: "age",
     key: "age",
+    sorter: (a, b) => a.age - b.age,
   },
   {
     title: "Birth date",
@@ -39,6 +59,14 @@ export const getColumns = ({ tableState, setTableState, navigate }) => [
     title: "Work Type",
     dataIndex: "worktype",
     key: "worktype",
+    filters: [
+      { text: "Freelance", value: "Freelance" },
+      { text: "Full time", value: "Full time" },
+      { text: "Part Time", value: "Part Time" },
+    ],
+    filterSearch: true,
+    filterMode: "tree",
+    onFilter: (value, record) => record.worktype.includes(value),
   },
   {
     title: "Country",

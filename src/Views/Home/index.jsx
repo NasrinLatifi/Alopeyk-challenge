@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TableContext } from "../../App";
 import { getColumns } from "./constants";
@@ -9,12 +9,22 @@ import { ACCOUNT_ROUTE } from "../../RouteManager";
 
 const Home = () => {
   const navigate = useNavigate();
+  const [searchText, setSearchText] = useState("");
+  const [searchedColumn, setSearchedColumn] = useState("");
   const { tableState, setTableState } = useContext(TableContext);
   const navigateToLogin = () => {
     navigate(ACCOUNT_ROUTE);
   };
   const columns = useMemo(() => {
-    return getColumns({ tableState, setTableState, navigate });
+    return getColumns({
+      searchedColumn,
+      setSearchedColumn,
+      tableState,
+      setTableState,
+      navigate,
+      searchText,
+      setSearchText,
+    });
   }, []);
   const handleChange = () => {};
   return (
