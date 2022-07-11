@@ -74,5 +74,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ## USE APP
 Thanks for testing my app.
-City is filtered base on country. Please set country first and then set country.
-Also, please check all countries and cities:)
+The Cityfield is filtered base on country in account page. Please set country first and then set country.
+Also, please check all countries and cities:). There different options.
+
+I use ANTD library and HTML elements(for better evaluation)
+I use context for data managing.
+I use react router 6 and use search param for handling form modes(add/edit/view).
