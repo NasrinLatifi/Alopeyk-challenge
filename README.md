@@ -72,7 +72,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 
-## USE APP
+## APP USAGE
 Thanks for testing my app.
 The Cityfield is filtered base on country in account page. Please set country first and then set country.
 Also, please check all countries and cities:). There different options.
