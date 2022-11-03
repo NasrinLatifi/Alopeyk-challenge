@@ -1,6 +1,7 @@
 import { ACCOUNT_ROUTE } from "../../RouteManager";
 import { getColumnSearchProps } from "./ColumnSreach";
 import "./_home.scss";
+
 export const getColumns = ({
   tableState,
   setTableState,
@@ -11,15 +12,15 @@ export const getColumns = ({
   setSearchedColumn,
 }) => [
   {
-    title: "First Name",
-    dataIndex: "firstName",
-    key: "firstName",
+    title: "Location Name",
+    dataIndex: "locationName",
+    key: "locationName",
     filterSearch: true,
     filterMode: "tree",
-    onFilter: (value, record) => record.firstName.includes(value),
+    onFilter: (value, record) => record.locationName.includes(value),
     width: 100,
     ...getColumnSearchProps({
-      dataIndex: "firstName",
+      dataIndex: "locationName",
       searchText,
       setSearchText,
       searchedColumn,
@@ -27,71 +28,19 @@ export const getColumns = ({
     }),
   },
   {
-    title: "Last Name",
-    dataIndex: "lastName",
-    width: 100,
-    key: "lastName",
-    ...getColumnSearchProps({
-      dataIndex: "lastName",
-      searchText,
-      setSearchText,
-      searchedColumn,
-      setSearchedColumn,
-    }),
-  },
-  {
-    title: "Age",
-    dataIndex: "age",
-    key: "age",
-    sorter: (a, b) => a.age - b.age,
-  },
-  {
-    title: "Birth date",
-    dataIndex: "birthDate",
-    key: "birthDate",
-  },
-  {
-    title: "Gender",
-    dataIndex: "gender",
-    key: "gender",
-  },
-  {
-    title: "Work Type",
-    dataIndex: "worktype",
-    key: "worktype",
+    title: "Location Type",
+    dataIndex: "locationType",
+    key: "locationType",
     filters: [
-      { text: "Freelance", value: "Freelance" },
-      { text: "Full time", value: "Full time" },
-      { text: "Part Time", value: "Part Time" },
+      { text: "Home", value: "home" },
+      { text: "Work", value: "work" },
+      { text: "Business", value: "business" },
+      { text: "Friend's Location", value: "friendly" },
+      { text: "Family's Location", value: "family" },
     ],
     filterSearch: true,
     filterMode: "tree",
     onFilter: (value, record) => record.worktype.includes(value),
-  },
-  {
-    title: "Country",
-    dataIndex: "country",
-    key: "country",
-  },
-  {
-    title: "City",
-    dataIndex: "city",
-    key: "city",
-  },
-  {
-    title: "Job Title",
-    dataIndex: "jobTitle",
-    key: "jobTitle",
-  },
-  {
-    title: "Phone Number",
-    dataIndex: "phoneNumber",
-    key: "phoneNumber",
-  },
-  {
-    title: "Description",
-    dataIndex: "description",
-    key: "description",
   },
   {
     title: "Action",

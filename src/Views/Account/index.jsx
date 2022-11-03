@@ -26,7 +26,7 @@ const Account = () => {
       : mode === "edit"
       ? "Edit your Account"
       : "View your Account";
-    
+
   /****************************** ELEMENTS *****************************************/
   return (
     <div className="account-page">

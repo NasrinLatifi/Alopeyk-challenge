@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { useMapEvents } from "react-leaflet/hooks";
+import { useFormikContext } from "formik";
 import "./_mainMap.scss";
-import { MapContainer } from "react-leaflet/MapContainer";
-import { TileLayer } from "react-leaflet/TileLayer";
-import { Marker } from "react-leaflet/Marker";
-import { Popup } from "react-leaflet/Popup";
-import { useMap, useMapEvents } from "react-leaflet/hooks";
+import "leaflet/dist/leaflet.css";
+
+const defaultLocation = [35.70161989139748, 51.40018794532503];
 
 /**
  * we use HTML input
@@ -12,34 +13,36 @@ import { useMap, useMapEvents } from "react-leaflet/hooks";
  * @returns input element with label
  */
 const MainMap = (props) => {
-  const { label, onChange, values } = props;
+  const { label, defaultValue = defaultLocation, name } = props;
 
   /****************************** ELMENTS *****************************************/
   return (
-    <div className="main-input-wrapper">
+    <div className="main-map-wrapper">
       <div className="text-container">
         <span className="label-style">{label}</span>
       </div>
-      <MapContainer
-        center={values || [35.7, 51.3]}
-        zoom={13}
-        scrollWheelZoom={false}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <LocationMarker onChange={onChange} />
-      </MapContainer>
+      <div className="main-map-container">
+        <MapContainer center={defaultValue} zoom={18} scrollWheelZoom={false}>
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <LocationMarker name={name} defaultValue={defaultValue} />
+        </MapContainer>
+      </div>
     </div>
   );
 };
 
-export default MainMap;
+export default React.memo(MainMap);
 
-function LocationMarker({ onChange }) {
-  const [position, setPosition] = useState(null);
+function LocationMarker({ name, defaultValue }) {
+  /****************************************************************************** */
+  const { setFieldValue } = useFormikContext();
+  const [position, setPosition] = useState(defaultValue ?? null);
   let clickTimeOut = null;
+
+  /******************************************************************************* */
   const map = useMapEvents({
     click(e) {
       if (clickTimeOut) {
@@ -49,6 +52,7 @@ function LocationMarker({ onChange }) {
       } else {
         clickTimeOut = setTimeout(() => {
           setPosition(e.latlng);
+          setFieldValue(name, e.latlng);
         }, 300);
       }
     },
@@ -59,8 +63,6 @@ function LocationMarker({ onChange }) {
   });
 
   if (!position) return null;
-  console.log("onChange",onChange);
-  onChange?.(position);
   return (
     <Marker position={position}>
       <Popup>You are here</Popup>

@@ -1,0 +1,14 @@
+.main-map-wrapper {
+  width: 400px;
+  height: 272px;
+  margin-bottom: 10px;;
+  .main-map-container {
+    background-color: #fff;
+    padding: 1rem;
+    width: 100%;
+    height: 250px;
+    .leaflet-container {
+      height: 100%;
+    }
+  }
+}

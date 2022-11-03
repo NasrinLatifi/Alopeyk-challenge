@@ -11,6 +11,7 @@ import MainSelect from "../MainSelect";
 import { HOME_ROUTE } from "../../RouteManager";
 import { TableContext } from "../../App";
 import { v4 as uuid } from "uuid";
+import MainMap from "../MainMap";
 
 /****************************** DATA BASE *****************************************/
 const cityDB = {
@@ -40,7 +41,7 @@ const cityDB = {
  * @returns account form + buttons
  */
 
-const Form = ({ isDisabled, initialValues = { gender: "female" } }) => {
+const Form = ({ isDisabled, initialValues = { locationType: "home" } }) => {
   /****************************** VALUE GETTERS *****************************************/
   const { setTableState, tableState } = useContext(TableContext);
 
@@ -95,144 +96,46 @@ const Form = ({ isDisabled, initialValues = { gender: "female" } }) => {
             <form className="form-container" onSubmit={handleSubmit}>
               <MainInput
                 isDisabled={isDisabled}
-                label="First Name"
-                name="firstName"
+                label="Location Name"
+                name="locationName"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                defaultValue={initialValues.firstName}
-                errorMessage={
-                  touched?.firstName && errors.firstName
-                    ? errors.firstName
-                    : null
-                }
+                defaultValue={initialValues.locationName}
+                errorMessage={errors?.locationName ? errors.locationName : null}
               />
-              <MainInput
-                isDisabled={isDisabled}
-                label="Last Name"
-                name="lastName"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                defaultValue={initialValues.lastName}
-                errorMessage={
-                  touched?.lastName && errors.lastName ? errors.lastName : null
-                }
-              />
-              <MainInput
-                isDisabled={isDisabled}
-                label="Age"
-                name="age"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                defaultValue={initialValues.age}
-                type="number"
-                min={19}
-                max={49}
-                errorMessage={touched?.age && errors.age ? errors.age : null}
-              />
-              <MainInput
-                isDisabled={isDisabled}
-                label="Birth date"
-                name="birthDate"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                defaultValue={initialValues.birthDate}
-                type={"date"}
-                errorMessage={
-                  touched?.birthDate && errors.birthDate
-                    ? errors.birthDate
-                    : null
-                }
-              />
-              <RadioGroup
-                isDisabled={isDisabled}
-                label="Gender"
-                name="gender"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                defaultValue={initialValues.gender}
-                errorMessage={
-                  touched?.gender && errors.gender ? errors.gender : null
-                }
-              />
-              <CheckBox
-                isDisabled={isDisabled}
-                label="Work Type"
-                name="worktype"
-                onChange={handleChange}
-                defaultValue={initialValues.worktype}
-              />
-
               <MainSelect
                 isDisabled={isDisabled}
-                label="Country"
-                name="country"
+                label="Location Type"
+                name="locationType"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                defaultValue={initialValues.country}
+                defaultValue={initialValues?.locationType}
                 optionsList={[
-                  { id: "iran", name: "Iran" },
-                  { id: "canada", name: "Canada" },
-                  { id: "germany", name: "Germany" },
-                  { id: "US", name: "US" },
-                  { id: "UK", name: "UK" },
+                  { id: "home", name: "Home" },
+                  { id: "work", name: "Work" },
+                  { id: "business", name: "Business" },
+                  { id: "friendly", name: "Friend's Location" },
+                  { id: "family", name: "Family's Location" },
                 ]}
                 errorMessage={
-                  touched?.country && errors.country ? errors.country : null
-                }
-              />
-              <MainSelect
-                isDisabled={isDisabled}
-                label="City"
-                name="city"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                defaultValue={initialValues.city}
-                optionsList={cityDB[values.country]}
-                errorMessage={touched?.city && errors.city ? errors.city : null}
-              />
-              <MainSelect
-                isDisabled={isDisabled}
-                label="Job Title"
-                name="jobTitle"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                defaultValue={initialValues.jobTitle}
-                optionsList={[
-                  { id: "developr/junior", name: "developr - junior" },
-                  { id: "developr/middle", name: "developr - middle" },
-                  { id: "developr/senior", name: "developr - senior" },
-                  { id: "HR", name: "HR" },
-                  { id: "CTO", name: "CTO" },
-                ]}
-                errorMessage={
-                  touched?.jobTitle && errors.jobTitle ? errors.jobTitle : null
+                  touched?.jobTitle && errors?.jobTitle
+                    ? errors?.jobTitle
+                    : null
                 }
               />
               <MainInput
                 isDisabled={isDisabled}
-                label="Phone Number"
-                name="phoneNumber"
+                label="Logo"
+                name="logo"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                defaultValue={initialValues.phoneNumber}
-                errorMessage={
-                  touched?.phoneNumber && errors.phoneNumber
-                    ? errors.phoneNumber
-                    : null
-                }
+                defaultValue={null}
+                type={"file"}
               />
-              <MainTextArea
-                isDisabled={isDisabled}
-                label="Description"
-                name="description"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                defaultValue={initialValues.description}
-                errorMessage={
-                  touched?.description && errors.description
-                    ? errors.description
-                    : null
-                }
+              <MainMap
+                label="Location"
+                name="location"
+                defaultValue={initialValues?.location}
               />
               <div className="button-container">
                 <button onClick={navigateToHome} className="cancel-button">
