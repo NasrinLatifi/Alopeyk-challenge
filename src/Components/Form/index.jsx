@@ -2,11 +2,8 @@ import React, { useContext } from "react";
 import { Formik } from "formik";
 import { useNavigate } from "react-router-dom";
 import MainInput from "../MainInput";
-import MainTextArea from "../MainTextArea";
 import { onValidateForm } from "./helpers";
 import "./_form.scss";
-import RadioGroup from "../RadioGroup";
-import CheckBox from "../CheckBox";
 import MainSelect from "../MainSelect";
 import { HOME_ROUTE } from "../../RouteManager";
 import { TableContext } from "../../App";
@@ -14,20 +11,13 @@ import { v4 as uuid } from "uuid";
 import MainMap from "../MainMap";
 
 /****************************** DATA BASE *****************************************/
-const cityDB = {
-  iran: [
-    { id: "tehran", name: "Tehran" },
-    { id: "esfahan", name: "Esfahan" },
-    { id: "shiraz", name: "Shiraz" },
-  ],
-  germany: [
-    { id: "berlin", name: "Berlin" },
-    { id: "hamburg", name: "Hamburg" },
-  ],
-  UK: [{ id: "london", name: "london" }],
-  US: [{ id: "newyork", name: "Newyork" }],
-  canada: [{ id: "toronto", name: "Toronto" }],
-};
+const locationTypeList = [
+  { id: "home", name: "Home" },
+  { id: "work", name: "Work" },
+  { id: "business", name: "Business" },
+  { id: "friendly", name: "Friend's Location" },
+  { id: "family", name: "Family's Location" },
+];
 
 /**
  *
@@ -82,7 +72,6 @@ const Form = ({ isDisabled, initialValues = { locationType: "home" } }) => {
       onSubmit={onSubmitForm}
     >
       {({
-        values,
         errors,
         touched,
         handleChange,
@@ -92,63 +81,53 @@ const Form = ({ isDisabled, initialValues = { locationType: "home" } }) => {
         /* and other goodies */
       }) => {
         return (
-          <>
-            <form className="form-container" onSubmit={handleSubmit}>
-              <MainInput
-                isDisabled={isDisabled}
-                label="Location Name"
-                name="locationName"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                defaultValue={initialValues.locationName}
-                errorMessage={errors?.locationName ? errors.locationName : null}
-              />
-              <MainSelect
-                isDisabled={isDisabled}
-                label="Location Type"
-                name="locationType"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                defaultValue={initialValues?.locationType}
-                optionsList={[
-                  { id: "home", name: "Home" },
-                  { id: "work", name: "Work" },
-                  { id: "business", name: "Business" },
-                  { id: "friendly", name: "Friend's Location" },
-                  { id: "family", name: "Family's Location" },
-                ]}
-                errorMessage={
-                  touched?.jobTitle && errors?.jobTitle
-                    ? errors?.jobTitle
-                    : null
-                }
-              />
-              <MainInput
-                isDisabled={isDisabled}
-                label="Logo"
-                name="logo"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                defaultValue={null}
-                type={"file"}
-              />
-              <MainMap
-                label="Location"
-                name="location"
-                defaultValue={initialValues?.location}
-              />
-              <div className="button-container">
-                <button onClick={navigateToHome} className="cancel-button">
-                  {!isDisabled ? "Cancel" : "Go Home"}
+          <form className="form-container" onSubmit={handleSubmit}>
+            <MainInput
+              isDisabled={isDisabled}
+              label="Location Name"
+              name="locationName"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              defaultValue={initialValues.locationName}
+              errorMessage={errors?.locationName ? errors.locationName : null}
+            />
+            <MainSelect
+              isDisabled={isDisabled}
+              label="Location Type"
+              name="locationType"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              defaultValue={initialValues?.locationType}
+              optionsList={locationTypeList}
+              errorMessage={
+                touched?.jobTitle && errors?.jobTitle ? errors?.jobTitle : null
+              }
+            />
+            <MainInput
+              isDisabled={isDisabled}
+              label="Logo"
+              name="logo"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              defaultValue={null}
+              type={"file"}
+            />
+            <MainMap
+              label="Location"
+              name="location"
+              defaultValue={initialValues?.location}
+            />
+            <div className="button-container">
+              <button onClick={navigateToHome} className="cancel-button">
+                {!isDisabled ? "Cancel" : "Go Home"}
+              </button>
+              {!isDisabled && (
+                <button className="submit-button" type="submit">
+                  Submit
                 </button>
-                {!isDisabled && (
-                  <button className="submit-button" type="submit">
-                    Submit
-                  </button>
-                )}
-              </div>
-            </form>
-          </>
+              )}
+            </div>
+          </form>
         );
       }}
     </Formik>

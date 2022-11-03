@@ -4,13 +4,15 @@ import { useMapEvents } from "react-leaflet/hooks";
 import { useFormikContext } from "formik";
 import "./_mainMap.scss";
 import "leaflet/dist/leaflet.css";
+import markerIconPng from "leaflet/dist/images/marker-icon.png";
+import { Icon } from "leaflet";
 
 const defaultLocation = [35.70161989139748, 51.40018794532503];
 
 /**
- * we use HTML input
+ * we use react-leaflet
  * @param {object} props
- * @returns input element with label
+ * @returns map element with label
  */
 const MainMap = (props) => {
   const { label, defaultValue = defaultLocation, name } = props;
@@ -22,7 +24,7 @@ const MainMap = (props) => {
         <span className="label-style">{label}</span>
       </div>
       <div className="main-map-container">
-        <MapContainer center={defaultValue} zoom={18} scrollWheelZoom={false}>
+        <MapContainer center={defaultValue} readOnly={true} zoom={18} scrollWheelZoom={false}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -64,7 +66,16 @@ function LocationMarker({ name, defaultValue }) {
 
   if (!position) return null;
   return (
-    <Marker position={position}>
+    <Marker
+      position={position}
+      icon={
+        new Icon({
+          iconUrl: markerIconPng,
+          iconSize: [25, 41],
+          iconAnchor: [12, 41],
+        })
+      }
+    >
       <Popup>You are here</Popup>
     </Marker>
   );
