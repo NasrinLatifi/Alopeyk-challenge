@@ -41,7 +41,7 @@ const Home = () => {
     <div className="home-page-container">
       <div className="button-container">
         <button onClick={navigateToLogin} className="add-member-button">
-          Add New Account
+          Add New Location
         </button>
       </div>
       <Table

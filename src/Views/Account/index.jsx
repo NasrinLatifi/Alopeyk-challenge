@@ -5,11 +5,11 @@ import Form from "../../Components/Form";
 import "./_account.scss";
 
 /**
- * Account reads id and mode form search params
+ * Location reads id and mode form search params
  * if id exsits, we check initial value
  * in edit mode, we can edit form
  * in view mode, we can see informations
- * @returns account form
+ * @returns Location form
  */
 const Account = () => {
   /****************************** VALUE GETTERS *****************************************/
@@ -22,10 +22,10 @@ const Account = () => {
   const initialValues = tableState?.data?.find((item) => item.id === id);
   const header =
     !id || (id && !initialValues)
-      ? "Create A New Account"
+      ? "Create A New Location"
       : mode === "edit"
-      ? "Edit your Account"
-      : "View your Account";
+      ? "Edit your Location"
+      : "View your Location";
 
   /****************************** ELEMENTS *****************************************/
   return (
