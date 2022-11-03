@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import "./App.css";
+import MainMap from "./Components/MainMap";
 import RouteManager from "./RouteManager";
 
 export const TableContext = createContext();
@@ -10,6 +11,7 @@ function App() {
     <TableContext.Provider value={{ tableState, setTableState }}>
       <RouteManager />
     </TableContext.Provider>
+    // <MainMap />
   );
 }
 
